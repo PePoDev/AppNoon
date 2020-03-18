@@ -4,15 +4,16 @@
  * Licensed under MIT (https://github.com/setchi/FancyScrollView/blob/master/LICENSE)
  */
 
+using System;
+using UnityEngine;
+using UnityEngine.Serialization;
+
 namespace FancyScrollView.Example02
 {
-    class ItemData
+	[Serializable]
+    public class ItemData
     {
-        public string Message { get; }
-
-        public ItemData(string message)
-        {
-            Message = message;
-        }
+        [FormerlySerializedAs("Sprite")] public Sprite sprite;
+        public bool usable;
     }
 }

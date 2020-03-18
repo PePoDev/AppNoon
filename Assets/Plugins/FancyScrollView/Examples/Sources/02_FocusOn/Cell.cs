@@ -1,4 +1,4 @@
-﻿/*
+/*
  * FancyScrollView (https://github.com/setchi/FancyScrollView)
  * Copyright (c) 2020 setchi
  * Licensed under MIT (https://github.com/setchi/FancyScrollView/blob/master/LICENSE)
@@ -9,49 +9,43 @@ using UnityEngine.UI;
 
 namespace FancyScrollView.Example02
 {
-    class Cell : FancyCell<ItemData, Context>
-    {
-        [SerializeField] Animator animator = default;
-        [SerializeField] Text message = default;
-        [SerializeField] Image image = default;
-        [SerializeField] Button button = default;
+	public class Cell : FancyCell<ItemData, Context>
+	{
+		[SerializeField] private Animator animator = default;
+		[SerializeField] private Image image = default;
+		[SerializeField] private Button button = default;
 
-        static class AnimatorHash
-        {
-            public static readonly int Scroll = Animator.StringToHash("scroll");
-        }
+		private static class AnimatorHash
+		{
+			public static readonly int Scroll = Animator.StringToHash("scroll");
+		}
 
-        public override void Initialize()
-        {
-            button.onClick.AddListener(() => Context.OnCellClicked?.Invoke(Index));
-        }
+		public override void Initialize()
+		{
+			button.onClick.AddListener(() => Context.OnCellClicked?.Invoke(Index));
+		}
 
-        public override void UpdateContent(ItemData itemData)
-        {
-            message.text = itemData.Message;
+		public override void UpdateContent(ItemData itemData)
+		{
+			image.overrideSprite = itemData.sprite;
+			var selected = Context.SelectedIndex == Index;
+			// image.color = selected ? new Color32(0, g: 255, 255, 100) : new Color32(255, 255, 255, 77);
+		}
 
-            var selected = Context.SelectedIndex == Index;
-            image.color = selected
-                ? new Color32(0, 255, 255, 100)
-                : new Color32(255, 255, 255, 77);
-        }
+		public override void UpdatePosition(float position)
+		{
+			currentPosition = position;
 
-        public override void UpdatePosition(float position)
-        {
-            currentPosition = position;
+			if (animator.isActiveAndEnabled)
+			{
+				animator.Play(AnimatorHash.Scroll, -1, position);
+			}
 
-            if (animator.isActiveAndEnabled)
-            {
-                animator.Play(AnimatorHash.Scroll, -1, position);
-            }
+			animator.speed = 0;
+		}
 
-            animator.speed = 0;
-        }
+		private float currentPosition = 0;
 
-        // GameObject が非アクティブになると Animator がリセットされてしまうため
-        // 現在位置を保持しておいて OnEnable のタイミングで現在位置を再設定します
-        float currentPosition = 0;
-
-        void OnEnable() => UpdatePosition(currentPosition);
-    }
+		private void OnEnable() => UpdatePosition(currentPosition);
+	}
 }

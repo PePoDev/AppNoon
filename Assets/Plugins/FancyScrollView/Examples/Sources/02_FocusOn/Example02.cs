@@ -6,34 +6,36 @@
 
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace FancyScrollView.Example02
 {
-    class Example02 : MonoBehaviour
-    {
-        [SerializeField] ScrollView scrollView = default;
-        [SerializeField] Button prevCellButton = default;
-        [SerializeField] Button nextCellButton = default;
-        [SerializeField] Text selectedItemInfo = default;
+	public class Example02 : MonoBehaviour
+	{
+		[SerializeField] private ScrollView scrollView = default;
+		[SerializeField] private Button prevCellButton = default;
+		[SerializeField] private Button nextCellButton = default;
 
-        void Start()
-        {
-            prevCellButton.onClick.AddListener(scrollView.SelectPrevCell);
-            nextCellButton.onClick.AddListener(scrollView.SelectNextCell);
-            scrollView.OnSelectionChanged(OnSelectionChanged);
+		public ItemData[] items;
+		public Button select;
+		
+		private void Start()
+		{
+			prevCellButton.onClick.AddListener(scrollView.SelectPrevCell);
+			nextCellButton.onClick.AddListener(scrollView.SelectNextCell);
+			scrollView.OnSelectionChanged(OnSelectionChanged);
 
-            var items = Enumerable.Range(0, 20)
-                .Select(i => new ItemData($"Cell {i}"))
-                .ToArray();
+			scrollView.UpdateData(items);
+			scrollView.SelectCell(0);
+		}
 
-            scrollView.UpdateData(items);
-            scrollView.SelectCell(0);
-        }
-
-        void OnSelectionChanged(int index)
-        {
-            selectedItemInfo.text = $"Selected item info: index {index}";
-        }
-    }
+		private void OnSelectionChanged(int index)
+		{
+			if (items[index].usable == false)
+			{
+				select.interactable = false;
+			}
+		}
+	}
 }

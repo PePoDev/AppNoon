@@ -8,7 +8,7 @@ using System;
 
 namespace FancyScrollView.Example02
 {
-    class Context
+	public class Context
     {
         public int SelectedIndex = -1;
         public Action<int> OnCellClicked;
