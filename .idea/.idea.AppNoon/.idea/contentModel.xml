@@ -872,7 +872,6 @@
                 <e p="02_FocusOn" t="Include">
                   <e p="Cell.cs" t="Include" />
                   <e p="Context.cs" t="Include" />
-                  <e p="Example02.cs" t="Include" />
                   <e p="ItemData.cs" t="Include" />
                   <e p="ScrollView.cs" t="Include" />
                 </e>
@@ -1086,8 +1085,10 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="GameManager.cs" t="Include" />
+          <e p="Sc5.cs" t="Include" />
+          <e p="Sc6.cs" t="Include" />
           <e p="Sc6Cell.cs" t="Include" />
-          <e p="Sc6Scroller.cs" t="Include" />
+          <e p="Singleton.cs" t="Include" />
         </e>
       </e>
       <e p="DOTween.Modules.csproj" t="IncludeRecursive" />
