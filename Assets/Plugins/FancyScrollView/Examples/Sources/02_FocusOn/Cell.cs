@@ -29,7 +29,6 @@ namespace FancyScrollView.Example02
 		{
 			image.overrideSprite = itemData.sprite;
 			var selected = Context.SelectedIndex == Index;
-			// image.color = selected ? new Color32(0, g: 255, 255, 100) : new Color32(255, 255, 255, 77);
 		}
 
 		public override void UpdatePosition(float position)

@@ -19,7 +19,7 @@ namespace FancyScrollView.Example02
 
 		public ItemData[] items;
 		public Button select;
-		
+
 		private void Start()
 		{
 			prevCellButton.onClick.AddListener(scrollView.SelectPrevCell);
@@ -32,10 +32,7 @@ namespace FancyScrollView.Example02
 
 		private void OnSelectionChanged(int index)
 		{
-			if (items[index].usable == false)
-			{
-				select.interactable = false;
-			}
+			select.interactable = items[index].usable;
 		}
 	}
 }
