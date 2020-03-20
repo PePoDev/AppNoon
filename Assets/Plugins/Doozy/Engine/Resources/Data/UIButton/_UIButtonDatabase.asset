@@ -15,18 +15,22 @@ MonoBehaviour:
   DatabaseType: 0
   CategoryNames:
   - Custom
+  - Drawer
   - Example
   - General
   - Noti
+  - Sc10
   - Sc5
   - Sc6
   - Sc8
-  - Drawer
+  - Sc9
   Categories:
+  - {fileID: 11400000, guid: 19aced77bb7807f4ba236d984c5171b3, type: 2}
   - {fileID: 11400000, guid: 40f9e81ff80114a47a3721228ba749ed, type: 2}
   - {fileID: 11400000, guid: e3340be5b38305141af46664bcd0dc8b, type: 2}
   - {fileID: 11400000, guid: e46c330e4f922f44daa7bfe974317b58, type: 2}
+  - {fileID: 11400000, guid: 922c66b6c64aa7c43aee3559430dba37, type: 2}
   - {fileID: 11400000, guid: d8f09ed1fced1514487f2cae22e733b7, type: 2}
   - {fileID: 11400000, guid: dc799a520d31c4b4ba63ac6786bbbbb4, type: 2}
   - {fileID: 11400000, guid: ec31044be6506b7419824a40bdaa8111, type: 2}
-  - {fileID: 11400000, guid: 19aced77bb7807f4ba236d984c5171b3, type: 2}
+  - {fileID: 11400000, guid: c1ea305a50fb1e1438b6fee6b263a6b2, type: 2}

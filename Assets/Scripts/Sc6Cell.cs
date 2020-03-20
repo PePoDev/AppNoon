@@ -29,8 +29,13 @@ namespace FancyScrollView.Example02
 		{
 			image.overrideSprite = itemData.sprite;
 			var selected = Context.SelectedIndex == Index;
-			
-			button.onClick.AddListener(() => FindObjectOfType<Sc6>().OnSelect(Index));
+
+			button.onClick.RemoveAllListeners();
+			button.onClick.AddListener(() =>
+			{
+				if (itemData.usable)
+					FindObjectOfType<Sc6>().OnSelect(Index);
+			});
 		}
 
 		public override void UpdatePosition(float position)
@@ -41,7 +46,7 @@ namespace FancyScrollView.Example02
 			{
 				animator.Play(AnimatorHash.Scroll, -1, position);
 			}
-			
+
 			animator.speed = 0;
 		}
 

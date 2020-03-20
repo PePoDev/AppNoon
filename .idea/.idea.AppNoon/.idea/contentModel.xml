@@ -1037,13 +1037,16 @@
         <e p="Scripts" t="Include">
           <e p="Cake.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
-          <e p="HpText.cs" t="Include" />
           <e p="NotiCell.cs" t="Include" />
-          <e p="PointText.cs" t="Include" />
           <e p="Sc5.cs" t="Include" />
           <e p="Sc6.cs" t="Include" />
           <e p="Sc6Cell.cs" t="Include" />
           <e p="ScNoti.cs" t="Include" />
+          <e p="ValueLoader" t="Include">
+            <e p="HpText.cs" t="Include" />
+            <e p="NotiText.cs" t="Include" />
+            <e p="PointText.cs" t="Include" />
+          </e>
         </e>
       </e>
       <e p="DOTween.Modules.csproj" t="IncludeRecursive" />
