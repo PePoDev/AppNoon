@@ -1,7 +1,9 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using FancyScrollView.Example02;
+using UnityEditor.VersionControl;
 
 public class Sc5 : MonoBehaviour
 {
@@ -11,6 +13,17 @@ public class Sc5 : MonoBehaviour
 
 	public ItemData[] items;
 	public Button select;
+
+	public Image cake;
+
+	private int m_index = 0;
+
+	private void OnEnable()
+	{
+		var isNewMonth = PlayerPrefs.GetInt("lastMonth") != DateTime.Now.Month;
+		cake.gameObject.SetActive(!isNewMonth);
+		scrollView.gameObject.SetActive(isNewMonth);
+	}
 
 	private void Start()
 	{
@@ -22,15 +35,16 @@ public class Sc5 : MonoBehaviour
 		scrollView.SelectCell(0);
 	}
 
-	private int m_index = 0;
 	private void OnSelectionChanged(int index)
 	{
 		m_index = index;
 		select.interactable = items[m_index].usable;
 	}
 
+	// ReSharper disable once MemberCanBePrivate.Global
 	public void SelectCake()
 	{
-		Singleton.selectedCake = m_index;
+		PlayerPrefs.SetInt("mainCake", m_index);
+		PlayerPrefs.SetInt("lastMonth", DateTime.Now.Month);
 	}
 }

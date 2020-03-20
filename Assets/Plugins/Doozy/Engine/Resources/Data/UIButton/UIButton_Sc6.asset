@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CategoryName: Sc6
   DatabaseType: 0
-  Names: []
+  Names:
+  - date
+  - note

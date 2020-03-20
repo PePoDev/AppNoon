@@ -10,12 +10,10 @@ public class Sc6 : MonoBehaviour
 
 	public Image cake;
 	
-	public Sprite[] cakes;
 	public ItemData[] items;
 
 	private void OnEnable()
 	{
-		cake.overrideSprite = cakes[Singleton.selectedCake];
 	}
 
 	private void Start()
