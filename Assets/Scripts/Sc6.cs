@@ -8,12 +8,14 @@ public class Sc6 : MonoBehaviour
 {
 	[SerializeField] private ScrollView scrollView = default;
 
-	public Image cake;
+	public Cake cake;
 	
 	public ItemData[] items;
 
 	private void OnEnable()
 	{
+		var isNewDay = PlayerPrefs.GetInt("lastDay") != DateTime.Now.Day;
+		scrollView.gameObject.SetActive(isNewDay);
 	}
 
 	private void Start()
@@ -24,6 +26,7 @@ public class Sc6 : MonoBehaviour
 
 	public void OnSelect(int index)
 	{
-		Debug.Log($"Select topping id: {index}");
+		cake.AddToppingId(index);
+		PlayerPrefs.SetInt("lastDay", DateTime.Now.Day);
 	}
 }

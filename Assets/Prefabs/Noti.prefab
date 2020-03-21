@@ -671,10 +671,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: test test test
+  m_text: "\u0E2A\u0E27\u0E31\u0E2A\u0E14\u0E35\u0E27\u0E31\u0E19\u0E08\u0E31\u0E19\u0E17\u0E23\u0E4C"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: af5ef189a49dd25408d36fff1d490d15, type: 2}
-  m_sharedMaterial: {fileID: 7094664786353554390, guid: af5ef189a49dd25408d36fff1d490d15,
+  m_fontAsset: {fileID: 11400000, guid: 4d82653a97f232242917776186713ae7, type: 2}
+  m_sharedMaterial: {fileID: -6795724231542682306, guid: 4d82653a97f232242917776186713ae7,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -741,10 +741,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1459065877}
-    characterCount: 14
+    characterCount: 15
     spriteCount: 0
-    spaceCount: 2
-    wordCount: 3
+    spaceCount: 0
+    wordCount: 5
     linkCount: 0
     lineCount: 1
     pageCount: 1

@@ -43,7 +43,14 @@ MonoBehaviour:
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   m_outputSockets:
   - m_connectionMode: 0
-    m_connections: []
+    m_connections:
+    - m_inputConnectionPoint: {x: 202, y: 4}
+      m_outputConnectionPoint: {x: -2, y: 4}
+      m_id: 207167bb-11e5-41c7-af31-0c7b72293050
+      m_inputNodeId: 5dd614c2-9a96-490e-a5ab-d1b02db0c67c
+      m_inputSocketId: 21360eed-22b1-4ab1-99db-18b18b3e7bfa
+      m_outputNodeId: e3df1056-792b-4cc6-80a5-aa79dac3bf0f
+      m_outputSocketId: 7218bb2f-853d-4cd3-b2de-4ab46fdcb4bd
     m_connectionPoints:
     - {x: -2, y: 4}
     - {x: 202, y: 4}
@@ -334,7 +341,7 @@ MonoBehaviour:
   m_minimumOutputSocketsCount: 1
   m_graphId: 9b710258-e570-4eab-823c-5fe609634905
   m_id: 6fe6bcfb-8d4f-4eba-8278-1446b1b6feff
-  m_name: Noti
+  m_name: ScNoti
   m_notes: 
   m_onEnterShowViews:
   - Category: Main
@@ -492,7 +499,7 @@ MonoBehaviour:
   m_version: 1
   m_description: 
   m_id: 9b710258-e570-4eab-823c-5fe609634905
-  m_lastModified: 132291778510371962
+  m_lastModified: 132291781938514831
 --- !u!114 &3135836797177904245
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -531,6 +538,13 @@ MonoBehaviour:
       m_inputSocketId: 21360eed-22b1-4ab1-99db-18b18b3e7bfa
       m_outputNodeId: 0df44fc8-33c9-4532-b84c-6b382dcd3674
       m_outputSocketId: f48146d5-9a27-49e5-8c6f-381940054a7c
+    - m_inputConnectionPoint: {x: 202, y: 4}
+      m_outputConnectionPoint: {x: -2, y: 4}
+      m_id: 207167bb-11e5-41c7-af31-0c7b72293050
+      m_inputNodeId: 5dd614c2-9a96-490e-a5ab-d1b02db0c67c
+      m_inputSocketId: 21360eed-22b1-4ab1-99db-18b18b3e7bfa
+      m_outputNodeId: e3df1056-792b-4cc6-80a5-aa79dac3bf0f
+      m_outputSocketId: 7218bb2f-853d-4cd3-b2de-4ab46fdcb4bd
     m_connectionPoints:
     - {x: -2, y: 4}
     - {x: 202, y: 4}

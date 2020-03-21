@@ -1043,7 +1043,9 @@
           <e p="Sc6Cell.cs" t="Include" />
           <e p="ScNoti.cs" t="Include" />
           <e p="ValueLoader" t="Include">
+            <e p="DayText.cs" t="Include" />
             <e p="HpText.cs" t="Include" />
+            <e p="MonthText.cs" t="Include" />
             <e p="NotiText.cs" t="Include" />
             <e p="PointText.cs" t="Include" />
           </e>
