@@ -1,8 +1,6 @@
 ﻿using System;
 using FancyScrollView.Example02;
 using UnityEngine;
-using UnityEngine.Serialization;
-using UnityEngine.UI;
 
 public class Sc6 : MonoBehaviour
 {

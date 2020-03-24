@@ -1036,6 +1036,7 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="Cake.cs" t="Include" />
+          <e p="Database.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
           <e p="NotiCell.cs" t="Include" />
           <e p="Sc5.cs" t="Include" />

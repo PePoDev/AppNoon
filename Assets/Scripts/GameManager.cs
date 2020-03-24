@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    
-    void Start()
+    private void Awake()
     {
-        
-    }
-
-    void Update()
-    {
-        
+        if (PlayerPrefs.HasKey("database") == false)
+        {
+            PlayerPrefs.SetString("database", JsonUtility.ToJson(new Database()));
+            PlayerPrefs.Save();
+        }
     }
 }

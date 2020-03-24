@@ -44,7 +44,11 @@ public class Sc5 : MonoBehaviour
 	// ReSharper disable once MemberCanBePrivate.Global
 	public void SelectCake()
 	{
-		PlayerPrefs.SetInt("mainCake", m_index);
+		var db = Database.Get();
+
+		db.cake.id = m_index;
+		
+		Database.Set(db);
 		PlayerPrefs.SetInt("lastMonth", DateTime.Now.Month);
 	}
 }
