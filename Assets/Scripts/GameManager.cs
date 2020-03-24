@@ -6,9 +6,10 @@ public class GameManager : MonoBehaviour
 {
     private void Awake()
     {
-        if (PlayerPrefs.HasKey("database") == false)
+        if (Database.HasDatabase() == false)
         {
-            PlayerPrefs.SetString("database", JsonUtility.ToJson(new Database()));
+            var db = new Database {cake = new CakeItem{toppings = new int[6]}};
+            PlayerPrefs.SetString("database", JsonUtility.ToJson(db));
             PlayerPrefs.Save();
         }
     }

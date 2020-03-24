@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Sc6 : MonoBehaviour
 {
-	[SerializeField] private ScrollView scrollView = default;
+	public ScrollView scrollView = default;
 
 	public Cake cake;
 	

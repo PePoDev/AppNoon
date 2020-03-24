@@ -7,12 +7,19 @@ public class Cake : MonoBehaviour
 
 	public Transform[] toppings;
 
+	public GameObject[] toppingPrefab;
+
+	public float factorPosition;
+	
 	public void OnEnable()
 	{
+		if (!Database.HasDatabase()) return;
+		
 		var db = Database.Get();
 
 		GetComponent<Image>().overrideSprite = cakes[db.cake.id];
 
+		// Remove all toppings and hide main
 		foreach (var t in toppings)
 		{
 			foreach (Transform child in t)
@@ -23,6 +30,7 @@ public class Cake : MonoBehaviour
 			t.gameObject.SetActive(true);
 		}
 
+		// Create topping to child
 		for (var i = 0; i < db.cake.toppings.Length; i++)
 		{
 			if (db.cake.toppings[i] == 0)
@@ -31,12 +39,13 @@ public class Cake : MonoBehaviour
 			}
 			else
 			{
-				var newPos = toppings[i].GetComponent<RectTransform>().anchoredPosition;
+				var newPos = new Vector2();
 				for (var j = 1; j < db.cake.toppings[i]; j++)
 				{
-					newPos.x += 5;
-					newPos.y += 5;
-					Instantiate(toppings[i].gameObject, newPos, toppings[i].rotation, toppings[i]);
+					newPos.x += factorPosition;
+					newPos.y += factorPosition;
+					var newTopping = Instantiate(toppingPrefab[i], toppings[i], false);
+					newTopping.GetComponent<RectTransform>().anchoredPosition =  newPos;
 				}
 			}
 		}
@@ -51,5 +60,7 @@ public class Cake : MonoBehaviour
 		Database.Set(db);
 
 		OnEnable();
+		
+		FindObjectOfType<Sc6>().scrollView.gameObject.SetActive(false);
 	}
 }

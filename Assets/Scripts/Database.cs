@@ -18,6 +18,11 @@ public class Database
 		PlayerPrefs.SetString("database", JsonUtility.ToJson(database));
 		PlayerPrefs.Save();
 	}
+
+	public static bool HasDatabase()
+	{
+		return PlayerPrefs.HasKey("database");
+	}
 }
 
 [Serializable]
