@@ -24,6 +24,9 @@ public class Sc6 : MonoBehaviour
 
 	public void OnSelect(int index)
 	{
+		if (PlayerPrefs.GetInt("lastDay") == DateTime.Now.Day)
+			return;
+		
 		cake.AddToppingId(index);
 		PlayerPrefs.SetInt("lastDay", DateTime.Now.Day);
 	}

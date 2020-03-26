@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class Cake : MonoBehaviour
@@ -60,7 +61,5 @@ public class Cake : MonoBehaviour
 		Database.Set(db);
 
 		OnEnable();
-		
-		FindObjectOfType<Sc6>().scrollView.gameObject.SetActive(false);
 	}
 }
