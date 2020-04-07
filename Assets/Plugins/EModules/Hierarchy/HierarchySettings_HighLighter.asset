@@ -17,7 +17,7 @@ MonoBehaviour:
   _colorFilters:
   - __ENABLE: 0
     NAME: View - Sc5
-    NameFilter: "\u256C@\u2565+\u2565<\u2565View -"
+    NameFilter: "\u256C@\u2565+\u2565<\u2565View"
     ComponentFilter: 
     TagFilter: 
     LayerFilter: 
@@ -28,9 +28,9 @@ MonoBehaviour:
     colorBg: {r: 0.22745098, g: 0.40392157, b: 0.39215687, a: 1}
     colorText: {r: 1, g: 0.92156863, b: 0, a: 1}
     colorIcon: {r: 1, g: 1, b: 1, a: 1}
-    __Aligment: 00000000000000000000000000000000000000000000000000000000000000000000000000000000a0000000
+    __Aligment: 00000000000000000000000000000000000000000000000000000000000000000000000002000000a0000000
   - __ENABLE: 0
-    NAME: View - Sc5
+    NAME: View - Sc5Draw
     NameFilter: "\u256C@\u2565+\u2565<\u2565Drawer"
     ComponentFilter: 
     TagFilter: 
@@ -42,4 +42,4 @@ MonoBehaviour:
     colorBg: {r: 0.22745098, g: 0.40392157, b: 1, a: 1}
     colorText: {r: 1, g: 0.92156863, b: 0, a: 1}
     colorIcon: {r: 1, g: 1, b: 1, a: 1}
-    __Aligment: 00000000000000000000000000000000000000000000000000000000000000000000000000000000a0000000
+    __Aligment: 00000000000000000000000000000000000000000000000000000000000000000000000002000000a0000000

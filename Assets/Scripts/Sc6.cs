@@ -5,7 +5,7 @@ using UnityEngine;
 public class Sc6 : MonoBehaviour
 {
 	public ScrollView scrollView = default;
-
+	
 	public Cake cake;
 	
 	public ItemData[] items;
@@ -13,7 +13,7 @@ public class Sc6 : MonoBehaviour
 	private void OnEnable()
 	{
 		var isNewDay = PlayerPrefs.GetInt("lastDay") != DateTime.Now.Day;
-		scrollView.gameObject.SetActive(isNewDay);
+		// scrollView.gameObject.SetActive(isNewDay);
 	}
 
 	private void Start()

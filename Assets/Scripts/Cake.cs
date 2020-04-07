@@ -11,12 +11,20 @@ public class Cake : MonoBehaviour
 	public GameObject[] toppingPrefab;
 
 	public float factorPosition;
-	
+
 	public void OnEnable()
 	{
 		if (!Database.HasDatabase()) return;
-		
+
 		var db = Database.Get();
+
+		if (db.cake.id == -1)
+		{
+			gameObject.SetActive(false);
+			return;
+		}
+
+		gameObject.SetActive(true);
 
 		GetComponent<Image>().overrideSprite = cakes[db.cake.id];
 
@@ -46,10 +54,16 @@ public class Cake : MonoBehaviour
 					newPos.x += factorPosition;
 					newPos.y += factorPosition;
 					var newTopping = Instantiate(toppingPrefab[i], toppings[i], false);
-					newTopping.GetComponent<RectTransform>().anchoredPosition =  newPos;
+					newTopping.GetComponent<RectTransform>().anchoredPosition = newPos;
 				}
 			}
 		}
+	}
+
+	private void OnDisable()
+	{
+		// if (gameObject.activeSelf == false)
+		// 	gameObject.SetActive(true);
 	}
 
 	public void AddToppingId(int id)

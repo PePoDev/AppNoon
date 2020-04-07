@@ -8,8 +8,10 @@ using UnityEditor.VersionControl;
 public class Sc5 : MonoBehaviour
 {
 	[SerializeField] private ScrollView scrollView = default;
+	[SerializeField] private GameObject content = default;
 	[SerializeField] private Button prevCellButton = default;
 	[SerializeField] private Button nextCellButton = default;
+	[SerializeField] private Button selectButton = default;
 
 	public ItemData[] items;
 	public Button select;
@@ -20,9 +22,14 @@ public class Sc5 : MonoBehaviour
 
 	private void OnEnable()
 	{
-		var isNewMonth = PlayerPrefs.GetInt("lastMonth") != DateTime.Now.Month;
+		var isNewMonth = PlayerPrefs.GetInt("lastMonth", 0) != DateTime.Now.Month;
 		cake.gameObject.SetActive(!isNewMonth);
-		scrollView.gameObject.SetActive(isNewMonth);
+		// scrollView.gameObject.SetActive(isNewMonth);
+
+		content.SetActive(isNewMonth);
+		selectButton.interactable = isNewMonth;
+		prevCellButton.interactable = isNewMonth;
+		nextCellButton.interactable = isNewMonth;
 	}
 
 	private void Start()

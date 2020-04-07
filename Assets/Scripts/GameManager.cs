@@ -8,7 +8,14 @@ public class GameManager : MonoBehaviour
     {
         if (Database.HasDatabase() == false)
         {
-            var db = new Database {cake = new CakeItem{toppings = new int[6]}};
+            var db = new Database
+            {
+                cake = new CakeItem
+                {
+                    id = -1,
+                    toppings = new int[6]
+                }
+            };
             PlayerPrefs.SetString("database", JsonUtility.ToJson(db));
             PlayerPrefs.Save();
         }
