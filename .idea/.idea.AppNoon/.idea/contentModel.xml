@@ -1042,6 +1042,7 @@
           <e p="Login.cs" t="Include" />
           <e p="NotiCell.cs" t="Include" />
           <e p="OnVideoEndEvent.cs" t="Include" />
+          <e p="Sc4.cs" t="Include" />
           <e p="Sc5.cs" t="Include" />
           <e p="Sc6.cs" t="Include" />
           <e p="Sc6Cell.cs" t="Include" />
