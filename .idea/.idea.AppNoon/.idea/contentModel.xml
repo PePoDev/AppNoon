@@ -871,6 +871,7 @@
                 </e>
                 <e p="02_FocusOn" t="Include">
                   <e p="Cell.cs" t="Include" />
+                  <e p="Cell1.cs" t="Include" />
                   <e p="Context.cs" t="Include" />
                   <e p="ItemData.cs" t="Include" />
                   <e p="ScrollView.cs" t="Include" />
@@ -1037,17 +1038,20 @@
         <e p="Scripts" t="Include">
           <e p="Cake.cs" t="Include" />
           <e p="Database.cs" t="Include" />
+          <e p="day.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
           <e p="HideImageOnStart.cs" t="Include" />
           <e p="Login.cs" t="Include" />
           <e p="NotiCell.cs" t="Include" />
           <e p="OnVideoEndEvent.cs" t="Include" />
+          <e p="Sc10.cs" t="Include" />
           <e p="Sc4.cs" t="Include" />
           <e p="Sc5.cs" t="Include" />
           <e p="Sc6.cs" t="Include" />
           <e p="Sc6Cell.cs" t="Include" />
           <e p="Sc8.cs" t="Include" />
           <e p="Sc8Cell.cs" t="Include" />
+          <e p="Sc9.cs" t="Include" />
           <e p="ScNoti.cs" t="Include" />
           <e p="ValueLoader" t="Include">
             <e p="DayText.cs" t="Include" />

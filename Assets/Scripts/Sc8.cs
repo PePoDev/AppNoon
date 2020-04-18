@@ -25,6 +25,8 @@ public class Sc8 : MonoBehaviour
 	public Sprite[] statusFace;
 	public TextMeshProUGUI statusText;
 
+	public TextMeshProUGUI text;
+
 	public GameObject dialog;
 	public Sprite[] messages;
 	public Image message;
@@ -32,8 +34,9 @@ public class Sc8 : MonoBehaviour
 	public Image picked;
 
 	private int i = -1;
+	private int j = -1;
 	private int resultIndex = 0;
-	
+
 	private void Start()
 	{
 		scrollView.UpdateData(items);
@@ -53,7 +56,8 @@ public class Sc8 : MonoBehaviour
 
 	private void OnSelection(int index)
 	{
-		picked.overrideSprite = items2[i].items[index].sprite;
+		j = index;
+		picked.overrideSprite = items2[i].items[j].sprite;
 	}
 
 	public void OnValueChanged(float Single)
@@ -67,8 +71,18 @@ public class Sc8 : MonoBehaviour
 	{
 		if (i == -1)
 			return;
+
+		var db = Database.Get();
+		db.toppingHistory[DateTime.Now.Month - 1].pictureId[DateTime.Now.Day - 1] = j;
+		db.toppingHistory[DateTime.Now.Month - 1].pictureGroup[DateTime.Now.Day - 1] = i;
+		db.toppingHistory[DateTime.Now.Month - 1].decs[DateTime.Now.Day - 1] = text.text;
+		db.toppingHistory[DateTime.Now.Month - 1].hp[DateTime.Now.Day - 1] = statusText.text;
+		Database.Set(db);
 		
 		dialog.SetActive(true);
 		message.overrideSprite = messages[resultIndex];
+
+		PlayerPrefs.SetInt("hp", PlayerPrefs.GetInt("hp") + (resultIndex - 5));
+		PlayerPrefs.Save();
 	}
 }

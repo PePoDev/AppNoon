@@ -4,20 +4,182 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private void Awake()
-    {
-        if (Database.HasDatabase() == false)
-        {
-            var db = new Database
-            {
-                cake = new CakeItem
-                {
-                    id = -1,
-                    toppings = new int[6]
-                }
-            };
-            PlayerPrefs.SetString("database", JsonUtility.ToJson(db));
-            PlayerPrefs.Save();
-        }
-    }
+	private void Awake()
+	{
+		if (Database.HasDatabase() == false)
+		{
+			var db = new Database
+			{
+				cake = new CakeItem
+				{
+					id = -1,
+					toppings = new int[6]
+				},
+				cakes = new[]
+				{
+					new CakeItem
+					{
+						id = -1,
+						toppings = new int[6]
+					},
+					new CakeItem
+					{
+						id = -1,
+						toppings = new int[6]
+					},
+					new CakeItem
+					{
+						id = -1,
+						toppings = new int[6]
+					},
+					new CakeItem
+					{
+						id = -1,
+						toppings = new int[6]
+					},
+					new CakeItem
+					{
+						id = -1,
+						toppings = new int[6]
+					},
+					new CakeItem
+					{
+						id = -1,
+						toppings = new int[6]
+					},
+					new CakeItem
+					{
+						id = -1,
+						toppings = new int[6]
+					},
+					new CakeItem
+					{
+						id = -1,
+						toppings = new int[6]
+					},
+					new CakeItem
+					{
+						id = -1,
+						toppings = new int[6]
+					},
+					new CakeItem
+					{
+						id = -1,
+						toppings = new int[6]
+					},
+					new CakeItem
+					{
+						id = -1,
+						toppings = new int[6]
+					},
+					new CakeItem
+					{
+						id = -1,
+						toppings = new int[6]
+					},
+				},
+				toppingHistory = new ToppingHistory[12]
+				{
+					new ToppingHistory()
+					{
+						pictureGroup = new int[31],
+						pictureId = new int[31],
+						days = new int[31],
+						decs = new string[31],
+						hp = new string[31],
+					},
+					new ToppingHistory()
+					{
+						pictureGroup = new int[31],
+						pictureId = new int[31],
+						days = new int[31],
+						decs = new string[31],
+						hp = new string[31],
+					},
+					new ToppingHistory()
+					{
+						pictureGroup = new int[31],
+						pictureId = new int[31],
+						days = new int[31],
+						decs = new string[31],
+						hp = new string[31],
+					},
+					new ToppingHistory()
+					{
+						pictureGroup = new int[31],
+						pictureId = new int[31],
+						days = new int[31],
+						decs = new string[31],
+						hp = new string[31],
+					},
+					new ToppingHistory()
+					{
+						pictureGroup = new int[31],
+						pictureId = new int[31],
+						days = new int[31],
+						decs = new string[31],
+						hp = new string[31],
+					},
+					new ToppingHistory()
+					{
+						pictureGroup = new int[31],
+						pictureId = new int[31],
+						days = new int[31],
+						decs = new string[31],
+						hp = new string[31],
+					},
+					new ToppingHistory()
+					{
+						pictureGroup = new int[31],
+						pictureId = new int[31],
+						days = new int[31],
+						decs = new string[31],
+						hp = new string[31],
+					},
+					new ToppingHistory()
+					{
+						pictureGroup = new int[31],
+						pictureId = new int[31],
+						days = new int[31],
+						decs = new string[31],
+						hp = new string[31],
+					},
+					new ToppingHistory()
+					{
+						pictureGroup = new int[31],
+						pictureId = new int[31],
+						days = new int[31],
+						decs = new string[31],
+						hp = new string[31],
+					},
+					new ToppingHistory()
+					{
+						pictureGroup = new int[31],
+						pictureId = new int[31],
+						days = new int[31],
+						decs = new string[31],
+						hp = new string[31],
+					},
+					new ToppingHistory()
+					{
+						pictureGroup = new int[31],
+						pictureId = new int[31],
+						days = new int[31],
+						decs = new string[31],
+						hp = new string[31],
+					},
+					new ToppingHistory()
+					{
+						pictureGroup = new int[31],
+						pictureId = new int[31],
+						days = new int[31],
+						decs = new string[31],
+						hp = new string[31],
+					},
+				}
+			};
+			PlayerPrefs.SetString("database", JsonUtility.ToJson(db));
+			PlayerPrefs.Save();
+		}
+	}
 }

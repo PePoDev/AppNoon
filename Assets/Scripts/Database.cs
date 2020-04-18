@@ -8,6 +8,9 @@ public class Database
 	public Notification[] notifications;
 	public CakeItem cake;
 
+	public CakeItem[] cakes;
+	public ToppingHistory[] toppingHistory;
+	
 	public static Database Get()
 	{
 		return JsonUtility.FromJson<Database>(PlayerPrefs.GetString("database"));
@@ -40,4 +43,14 @@ public class CakeItem
 {
 	public int id;
 	public int[] toppings;
+}
+
+[Serializable]
+public class ToppingHistory
+{
+	public int[] pictureGroup;
+	public int[] pictureId;
+	public int[] days;
+	public string[] decs;
+	public string[] hp;
 }
