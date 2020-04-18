@@ -1046,6 +1046,8 @@
           <e p="Sc5.cs" t="Include" />
           <e p="Sc6.cs" t="Include" />
           <e p="Sc6Cell.cs" t="Include" />
+          <e p="Sc8.cs" t="Include" />
+          <e p="Sc8Cell.cs" t="Include" />
           <e p="ScNoti.cs" t="Include" />
           <e p="ValueLoader" t="Include">
             <e p="DayText.cs" t="Include" />

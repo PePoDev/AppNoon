@@ -14,7 +14,6 @@ public class Sc5 : MonoBehaviour
 	[SerializeField] private Button selectButton = default;
 
 	public ItemData[] items;
-	public Button select;
 
 	public Image cake;
 
@@ -45,7 +44,15 @@ public class Sc5 : MonoBehaviour
 	private void OnSelectionChanged(int index)
 	{
 		m_index = index;
-		select.interactable = items[m_index].usable;
+		selectButton.interactable = items[m_index].usable;
+		
+		var isNewMonth = PlayerPrefs.GetInt("lastMonth", 0) != DateTime.Now.Month;
+		cake.gameObject.SetActive(!isNewMonth);
+		
+		content.SetActive(isNewMonth);
+		selectButton.interactable = isNewMonth;
+		prevCellButton.interactable = isNewMonth;
+		nextCellButton.interactable = isNewMonth;
 	}
 
 	// ReSharper disable once MemberCanBePrivate.Global

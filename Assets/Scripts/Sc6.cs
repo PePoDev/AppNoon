@@ -14,6 +14,15 @@ public class Sc6 : MonoBehaviour
 	{
 		var isNewDay = PlayerPrefs.GetInt("lastDay") != DateTime.Now.Day;
 		// scrollView.gameObject.SetActive(isNewDay);
+		if (!Database.HasDatabase()) return;
+
+		var db = Database.Get();
+
+		if (db.cake.id != -1)
+		{
+			cake.gameObject.SetActive(true);
+			return;
+		}
 	}
 
 	private void Start()
@@ -24,10 +33,20 @@ public class Sc6 : MonoBehaviour
 
 	public void OnSelect(int index)
 	{
-		if (PlayerPrefs.GetInt("lastDay") == DateTime.Now.Day)
-			return;
+		var isNewDay = PlayerPrefs.GetInt("lastDay") != DateTime.Now.Day;
+		// scrollView.gameObject.SetActive(isNewDay);
+		if (!Database.HasDatabase()) return;
+
+		var db = Database.Get();
+
+		if (db.cake.id != -1)
+		{
+			if (PlayerPrefs.GetInt("lastDay") == DateTime.Now.Day)
+				return;
 		
-		cake.AddToppingId(index);
-		PlayerPrefs.SetInt("lastDay", DateTime.Now.Day);
+			cake.AddToppingId(index);
+			PlayerPrefs.SetInt("lastDay", DateTime.Now.Day);
+		}
+		
 	}
 }
