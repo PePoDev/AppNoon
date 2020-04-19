@@ -45,8 +45,10 @@ public class Sc6 : MonoBehaviour
 
 			db.toppingHistory[DateTime.Now.Month - 1].days[DateTime.Now.Day - 1] = index + 1;
 			Database.Set(db);
+			
 			cake.AddToppingId(index);
 			PlayerPrefs.SetInt("lastDay", DateTime.Now.Day);
+			PlayerPrefs.Save();
 		}
 	}
 

@@ -24,6 +24,7 @@ MonoBehaviour:
   - Sc6
   - Sc8
   - Sc9
+  - Sc11
   Categories:
   - {fileID: 11400000, guid: 19aced77bb7807f4ba236d984c5171b3, type: 2}
   - {fileID: 11400000, guid: 40f9e81ff80114a47a3721228ba749ed, type: 2}
@@ -34,3 +35,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dc799a520d31c4b4ba63ac6786bbbbb4, type: 2}
   - {fileID: 11400000, guid: ec31044be6506b7419824a40bdaa8111, type: 2}
   - {fileID: 11400000, guid: c1ea305a50fb1e1438b6fee6b263a6b2, type: 2}
+  - {fileID: 11400000, guid: 008b3aee961b7ef458de880fcbcaaaa4, type: 2}

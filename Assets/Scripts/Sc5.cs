@@ -15,20 +15,20 @@ public class Sc5 : MonoBehaviour
 
 	public ItemData[] items;
 
-	public Image cake;
+	// public Image cake;
 
 	private int m_index = 0;
 
 	private void OnEnable()
 	{
 		var isNewMonth = PlayerPrefs.GetInt("lastMonth", 0) != DateTime.Now.Month;
-		cake.gameObject.SetActive(!isNewMonth);
+		// cake.gameObject.SetActive(!isNewMonth);
 		// scrollView.gameObject.SetActive(isNewMonth);
 
-		content.SetActive(isNewMonth);
+		// content.SetActive(isNewMonth);
 		selectButton.interactable = isNewMonth;
-		prevCellButton.interactable = isNewMonth;
-		nextCellButton.interactable = isNewMonth;
+		// prevCellButton.interactable = isNewMonth;
+		// nextCellButton.interactable = isNewMonth;
 	}
 
 	private void Start()
@@ -44,15 +44,11 @@ public class Sc5 : MonoBehaviour
 	private void OnSelectionChanged(int index)
 	{
 		m_index = index;
-		selectButton.interactable = items[m_index].usable;
-		
-		var isNewMonth = PlayerPrefs.GetInt("lastMonth", 0) != DateTime.Now.Month;
-		cake.gameObject.SetActive(!isNewMonth);
-		
-		content.SetActive(isNewMonth);
-		selectButton.interactable = isNewMonth;
-		prevCellButton.interactable = isNewMonth;
-		nextCellButton.interactable = isNewMonth;
+
+		if (PlayerPrefs.GetInt("lastMonth", 0) != DateTime.Now.Month)
+		{
+			selectButton.interactable = items[m_index].usable;
+		}
 	}
 
 	// ReSharper disable once MemberCanBePrivate.Global
@@ -61,8 +57,9 @@ public class Sc5 : MonoBehaviour
 		var db = Database.Get();
 
 		db.cake.id = m_index;
-		
+
 		Database.Set(db);
 		PlayerPrefs.SetInt("lastMonth", DateTime.Now.Month);
+		PlayerPrefs.Save();
 	}
 }

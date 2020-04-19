@@ -10,14 +10,16 @@ public class Login : MonoBehaviour
 	public UnityEvent onSuccessLogin;
 	public GameObject[] password;
 
+	private string passwordText = "";
 	private int m_index = 0;
 
 	public void EnterNumber(int number)
 	{
 		if (m_index > 3)
 			return;
-		
+
 		password[m_index].SetActive(true);
+		passwordText += number.ToString();
 		
 		m_index++;
 	}
@@ -25,7 +27,18 @@ public class Login : MonoBehaviour
 	public void LoginButton()
 	{
 		if (m_index == 4)
-			onSuccessLogin.Invoke();
+		{
+			var db = Database.Get();
+			if (passwordText.Equals(db.user.password))
+			{
+				onSuccessLogin.Invoke();
+			}
+			else
+			{
+				ClearPassword();
+			}
+			
+		}
 	}
 
 	public void ClearPassword()
@@ -35,6 +48,7 @@ public class Login : MonoBehaviour
 			pw.SetActive(false);
 		}
 
+		passwordText = "";
 		m_index = 0;
 	}
 }

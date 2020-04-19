@@ -15,5 +15,6 @@ namespace FancyScrollView.Example02
     {
         [FormerlySerializedAs("Sprite")] public Sprite sprite;
         public bool usable;
+        public int value;
     }
 }

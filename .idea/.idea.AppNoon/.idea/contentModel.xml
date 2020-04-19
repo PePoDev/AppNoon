@@ -1006,6 +1006,22 @@
             <e p="readme.txt" t="Include" />
             <e p="SimpleEncryption.cs" t="Include" />
           </e>
+          <e p="StandaloneFileBrowser" t="Include">
+            <e p="IStandaloneFileBrowser.cs" t="Include" />
+            <e p="Sample" t="Include">
+              <e p="BasicSample.cs" t="Include" />
+              <e p="CanvasSampleOpenFileImage.cs" t="Include" />
+              <e p="CanvasSampleOpenFileText.cs" t="Include" />
+              <e p="CanvasSampleOpenFileTextMultiple.cs" t="Include" />
+              <e p="CanvasSampleSaveFileImage.cs" t="Include" />
+              <e p="CanvasSampleSaveFileText.cs" t="Include" />
+            </e>
+            <e p="StandaloneFileBrowser.cs" t="Include" />
+            <e p="StandaloneFileBrowserEditor.cs" t="Include" />
+            <e p="StandaloneFileBrowserLinux.cs" t="Include" />
+            <e p="StandaloneFileBrowserMac.cs" t="Include" />
+            <e p="StandaloneFileBrowserWindows.cs" t="Include" />
+          </e>
           <e p="TextMesh Pro" t="Include">
             <e p="Fonts" t="Include">
               <e p="LiberationSans - OFL.txt" t="Include" />
@@ -1044,7 +1060,12 @@
           <e p="Login.cs" t="Include" />
           <e p="NotiCell.cs" t="Include" />
           <e p="OnVideoEndEvent.cs" t="Include" />
+          <e p="PlayVideo.cs" t="Include" />
+          <e p="PostCell.cs" t="Include" />
           <e p="Sc10.cs" t="Include" />
+          <e p="Sc11.cs" t="Include" />
+          <e p="Sc12.cs" t="Include" />
+          <e p="Sc14.cs" t="Include" />
           <e p="Sc4.cs" t="Include" />
           <e p="Sc5.cs" t="Include" />
           <e p="Sc6.cs" t="Include" />
@@ -1053,6 +1074,7 @@
           <e p="Sc8Cell.cs" t="Include" />
           <e p="Sc9.cs" t="Include" />
           <e p="ScNoti.cs" t="Include" />
+          <e p="Toggle.cs" t="Include" />
           <e p="ValueLoader" t="Include">
             <e p="DayText.cs" t="Include" />
             <e p="HpText.cs" t="Include" />

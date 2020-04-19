@@ -15,6 +15,9 @@ public class Cake : MonoBehaviour
 
 	public void OnEnable()
 	{
+		if (custom)
+			return;
+		
 		if (!Database.HasDatabase()) return;
 		var db = Database.Get();
 
@@ -60,8 +63,11 @@ public class Cake : MonoBehaviour
 		}
 	}
 
+	private bool custom = false;
 	public void LoadMonth(int month)
 	{
+		custom = true;
+		
 		if (!Database.HasDatabase()) return;
 		var db = Database.Get();
 

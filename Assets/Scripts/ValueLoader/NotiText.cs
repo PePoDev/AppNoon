@@ -7,6 +7,11 @@ public class NotiText : MonoBehaviour
 {
     private void OnEnable()
     {
-        GetComponent<TextMeshProUGUI>().text = PlayerPrefs.GetInt("noti").ToString();
+        if (!Database.HasDatabase())
+        {
+            return;
+        }
+        var db = Database.Get();
+        GetComponent<TextMeshProUGUI>().text = db.notifications.Count.ToString();
     }
 }

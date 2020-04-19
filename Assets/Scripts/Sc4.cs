@@ -3,7 +3,9 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using FancyScrollView.Example02;
+using TMPro;
 using UnityEditor.VersionControl;
+using UnityEngine.Events;
 
 public class Sc4 : MonoBehaviour
 {
@@ -14,6 +16,10 @@ public class Sc4 : MonoBehaviour
 
 	public ItemData[] items;
 
+	public TMP_InputField username;
+	public TMP_InputField email;
+	public TMP_InputField password;
+	
 	private int m_index = 0;
 
 	private void Start()
@@ -29,5 +35,23 @@ public class Sc4 : MonoBehaviour
 	private void OnSelectionChanged(int index)
 	{
 		m_index = index;
+	}
+
+	public UnityEvent OnReis;
+	public void Regis()
+	{
+		var db = Database.Get();
+		db.user.pictureId = m_index;
+		db.user.username = username.text;
+		db.user.email = email.text;
+		db.user.password = password.text;
+
+		if (password.text.Length != 4)
+		{
+			return;
+		}
+		
+		Database.Set(db);
+		OnReis.Invoke();
 	}
 }

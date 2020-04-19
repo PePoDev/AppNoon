@@ -31,6 +31,7 @@ namespace FancyScrollView.Example02
 		{
 			image.overrideSprite = itemData.sprite;
 			var selected = Context.SelectedIndex == Index;
+			text.text = itemData.value.ToString();
 		}
 
 		public override void UpdatePosition(float position)

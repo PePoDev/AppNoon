@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -176,7 +178,16 @@ public class GameManager : MonoBehaviour
 						decs = new string[31],
 						hp = new string[31],
 					},
-				}
+				},
+				notifications = new List<Notification>(),
+				user = new User
+				{
+					email = "",
+					password = "",
+					username = "",
+					pictureId = 0
+				},
+				posts = new List<Post>(),
 			};
 			PlayerPrefs.SetString("database", JsonUtility.ToJson(db));
 			PlayerPrefs.Save();

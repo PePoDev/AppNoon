@@ -25,8 +25,9 @@ public class Sc9 : MonoBehaviour
 		{
 			i++;
 
-			if (PlayerPrefs.GetInt("lastMonth", 0) == i + 1)
+			if (PlayerPrefs.GetInt("lastMonth", DateTime.Now.Month) == i + 1)
 			{
+				cake.gameObject.SetActive(true);
 				continue;
 			}
 
@@ -39,6 +40,23 @@ public class Sc9 : MonoBehaviour
 		prevCellButton.onClick.AddListener(scrollView.SelectPrevCell);
 		nextCellButton.onClick.AddListener(scrollView.SelectNextCell);
 		scrollView.OnSelectionChanged(OnSelectionChanged);
+
+		var db = Database.Get();
+
+		var temp = new int[6];
+		for (int i = 0; i < 12; i++)
+		{
+			for (int j = 0; j < 31; j++)
+			{
+				if (db.toppingHistory[i].days[j] == 0) continue;
+				temp[db.toppingHistory[i].days[j] - 1]++;
+			}
+		}
+
+		for (int i = 0; i < 6; i++)
+		{
+			items[i].value = temp[i];
+		}
 
 		scrollView.UpdateData(items);
 		scrollView.SelectCell(0);
