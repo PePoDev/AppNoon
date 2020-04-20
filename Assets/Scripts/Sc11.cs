@@ -33,13 +33,13 @@ public class Sc11 : MonoBehaviour
 
 				p.image.overrideSprite = sprite;
 				p.name.text = post.name;
-				// p.react1.overrideSprite = post.react1 ? p.on : p.off;
-				// p.react2.overrideSprite = post.react2 ? p.on : p.off;
-				// p.react3.overrideSprite = post.react3 ? p.on : p.off;
+				p.react1.overrideSprite = post.react1 ? p.on : p.off;
+				p.react2.overrideSprite = post.react2 ? p.on : p.off;
+				p.react3.overrideSprite = post.react3 ? p.on : p.off;
 				p.story.text = post.story;
 				p.picture.overrideSprite = pictures[post.picId];
 				p.db = db;
-				p.sc11 = this;
+				p.post = post;
 			}
 		}
 	}
