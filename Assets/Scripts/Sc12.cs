@@ -30,7 +30,6 @@ public class Sc12 : MonoBehaviour
 		{
 			StartCoroutine(OutputRoutine(new System.Uri(paths[0]).AbsoluteUri));
 		}
-
 	}
 
 	private IEnumerator OutputRoutine(string url)
@@ -40,15 +39,13 @@ public class Sc12 : MonoBehaviour
 
 		var texture = loader.texture;
 		var s = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
-		
+
 		image.overrideSprite = s;
 
 		var bytes = texture.EncodeToPNG();
 		enc = Convert.ToBase64String(bytes);
 
 		imageUploaded = true;
-
-		
 	}
 
 	private string enc;
@@ -59,7 +56,7 @@ public class Sc12 : MonoBehaviour
 		if (imageUploaded)
 		{
 			var db = Database.Get();
-		
+
 			var post = new Post()
 			{
 				date = DateTime.Now.ToString("dd MMM yyyy", CultureInfo.InvariantCulture),
@@ -71,11 +68,31 @@ public class Sc12 : MonoBehaviour
 				story = story.text,
 				picId = db.user.pictureId
 			};
-		
+
 			db.posts.Add(post);
 			Database.Set(db);
-			
+
 			onShared.Invoke();
 		}
+	}
+
+	public void AddScore()
+	{
+		var db = Database.Get();
+
+		var notification = new Notification()
+		{
+			date = DateTime.Now.ToString("dd MMM : hh.mm tt", CultureInfo.InvariantCulture),
+			day = DateTime.Now.Day,
+			month = DateTime.Now.ToString("MMM", CultureInfo.InvariantCulture),
+			desc = $"ได้รับคะแนนสะสม 1 Pt",
+			pictureId = 11
+		};
+
+		db.notifications.Add(notification);
+		PlayerPrefs.SetInt("point", PlayerPrefs.GetInt("point") + 1);
+		PlayerPrefs.Save();
+		
+		Database.Set(db);
 	}
 }
