@@ -695,6 +695,13 @@ MonoBehaviour:
       m_inputSocketId: 39c6155d-2173-4b59-acac-fba10bd756bc
       m_outputNodeId: a398a42c-aedd-4501-832e-3a3e6e187870
       m_outputSocketId: b162b9b5-4923-4028-a7b2-f9490bb8bff9
+    - m_inputConnectionPoint: {x: 202, y: 4}
+      m_outputConnectionPoint: {x: 106, y: 4}
+      m_id: 332ed378-36ad-426b-a060-3b862bda0a1b
+      m_inputNodeId: d643a7c0-3cfb-42f5-8634-00be65dee8f6
+      m_inputSocketId: 39c6155d-2173-4b59-acac-fba10bd756bc
+      m_outputNodeId: c0032b94-eb18-408b-9452-6d3add00df82
+      m_outputSocketId: c269ccff-920f-487d-b314-86746763ed9e
     m_connectionPoints:
     - {x: -2, y: 4}
     - {x: 202, y: 4}
@@ -872,14 +879,7 @@ MonoBehaviour:
   ErrorDuplicateNameFoundInGraph: 0
   m_inputSockets:
   - m_connectionMode: 1
-    m_connections:
-    - m_inputConnectionPoint: {x: -2, y: 4}
-      m_outputConnectionPoint: {x: -2, y: 4}
-      m_id: 474397ca-c19b-45a6-9730-9eaf72e7afff
-      m_inputNodeId: 6ee455f9-02a9-4ce1-b732-8e3f354e7e24
-      m_inputSocketId: 083bc2fc-d308-49fe-9cfd-ceab74f035d3
-      m_outputNodeId: c0032b94-eb18-408b-9452-6d3add00df82
-      m_outputSocketId: c269ccff-920f-487d-b314-86746763ed9e
+    m_connections: []
     m_connectionPoints:
     - {x: -2, y: 4}
     - {x: 202, y: 4}
@@ -991,7 +991,7 @@ MonoBehaviour:
   m_version: 1
   m_description: 
   m_id: 9b710258-e570-4eab-823c-5fe609634905
-  m_lastModified: 132318516214153960
+  m_lastModified: 132319531673486423
 --- !u!114 &523206441753335222
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2057,11 +2057,11 @@ MonoBehaviour:
   m_outputSockets:
   - m_connectionMode: 0
     m_connections:
-    - m_inputConnectionPoint: {x: -2, y: 4}
-      m_outputConnectionPoint: {x: -2, y: 4}
-      m_id: 474397ca-c19b-45a6-9730-9eaf72e7afff
-      m_inputNodeId: 6ee455f9-02a9-4ce1-b732-8e3f354e7e24
-      m_inputSocketId: 083bc2fc-d308-49fe-9cfd-ceab74f035d3
+    - m_inputConnectionPoint: {x: 202, y: 4}
+      m_outputConnectionPoint: {x: 106, y: 4}
+      m_id: 332ed378-36ad-426b-a060-3b862bda0a1b
+      m_inputNodeId: d643a7c0-3cfb-42f5-8634-00be65dee8f6
+      m_inputSocketId: 39c6155d-2173-4b59-acac-fba10bd756bc
       m_outputNodeId: c0032b94-eb18-408b-9452-6d3add00df82
       m_outputSocketId: c269ccff-920f-487d-b314-86746763ed9e
     m_connectionPoints:
@@ -2091,8 +2091,8 @@ MonoBehaviour:
   m_useUpdate: 0
   m_height: 80
   m_width: 120
-  m_x: -420
-  m_y: -636
+  m_x: 876
+  m_y: 0
   m_minimumInputSocketsCount: 1
   m_minimumOutputSocketsCount: 1
   m_graphId: 9b710258-e570-4eab-823c-5fe609634905

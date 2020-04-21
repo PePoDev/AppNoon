@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using FancyScrollView.Example02;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -8,6 +9,11 @@ using UnityEngine.UI;
 
 public class Sc14 : MonoBehaviour
 {
+	[SerializeField] private ScrollView scrollView = default;
+	[SerializeField] private GameObject content = default;
+	[SerializeField] private Button prevCellButton = default;
+	[SerializeField] private Button nextCellButton = default;
+
 	public Image frame;
 	public Image profile;
 	public TextMeshProUGUI username;
@@ -15,10 +21,29 @@ public class Sc14 : MonoBehaviour
 	public TextMeshProUGUI email;
 	public TMP_InputField emailEdit;
 
+	public ItemData[] items;
+
 	public Sprite[] frames;
 	public Sprite[] profilePictures;
 
 	private int m_frameIndex;
+
+	private void Start()
+	{
+		prevCellButton.onClick.AddListener(scrollView.SelectPrevCell);
+		nextCellButton.onClick.AddListener(scrollView.SelectNextCell);
+		scrollView.OnSelectionChanged(OnSelectionChanged);
+
+		scrollView.UpdateData(items);
+		scrollView.SelectCell(0);
+	}
+
+	private int m_tempIndex = -1;
+
+	private void OnSelectionChanged(int id)
+	{
+		m_tempIndex = id;
+	}
 
 	private void OnEnable()
 	{
@@ -35,9 +60,19 @@ public class Sc14 : MonoBehaviour
 		if (Database.HasDatabase())
 		{
 			var db = Database.Get();
+
+			if (m_tempIndex != -1)
+			{
+				db.user.pictureId = m_tempIndex;
+				m_tempIndex = -1;
+			}
+
+			scrollView.SelectCell(db.user.pictureId);
+
 			username.text = db.user.username;
 			email.text = db.user.email;
 			profile.overrideSprite = profilePictures[db.user.pictureId];
+			Database.Set(db);
 		}
 	}
 
