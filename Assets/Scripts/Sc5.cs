@@ -3,7 +3,6 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using FancyScrollView.Example02;
-using UnityEditor.VersionControl;
 
 public class Sc5 : MonoBehaviour
 {

@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using FancyScrollView.Example02;
 using TMPro;
-using UnityEditor.VersionControl;
 using UnityEngine.Events;
 
 public class Sc4 : MonoBehaviour
@@ -19,7 +18,7 @@ public class Sc4 : MonoBehaviour
 	public TMP_InputField username;
 	public TMP_InputField email;
 	public TMP_InputField password;
-	
+
 	private int m_index = 0;
 
 	private void Start()
@@ -38,6 +37,7 @@ public class Sc4 : MonoBehaviour
 	}
 
 	public UnityEvent OnReis;
+
 	public void Regis()
 	{
 		var db = Database.Get();
@@ -50,7 +50,7 @@ public class Sc4 : MonoBehaviour
 		{
 			return;
 		}
-		
+
 		Database.Set(db);
 		OnReis.Invoke();
 	}

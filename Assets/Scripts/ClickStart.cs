@@ -6,11 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class ClickStart : MonoBehaviour
 {
-    private void Update()
-    {
-        if (Input.anyKeyDown || Input.touchCount > 0)
-        {
-            SceneManager.LoadScene("Main");
-        }
-    }
+	public void OnClick()
+	{
+		SceneManager.LoadScene("Main");
+	}
 }

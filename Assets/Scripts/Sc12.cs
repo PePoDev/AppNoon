@@ -3,26 +3,58 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
 using SFB;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using System.Text;
 
 public class Sc12 : MonoBehaviour
 {
+	public GameObject uploadButton;
+
 	public Image image;
 	public TMP_InputField story;
 
 	public bool imageUploaded;
 
+#if UNITY_WEBGL && !UNITY_EDITOR
+	private void Start()
+	{
+		var button = uploadButton.GetComponent<Button>();
+		button.onClick.RemoveAllListeners();
+		button.onClick.AddListener(OnClickWebGL);
+	}
+
+	[DllImport("__Internal")]
+	private static extern void UploadFile(string gameObjectName, string methodName, string filter, bool multiple);
+
+	public void OnClickWebGL()
+	{
+		UploadFile(gameObject.name, "OnFileUpload", ".png, .jpg", false);
+	}
+
+	public void OnFileUpload(string url)
+	{
+		StartCoroutine(OutputRoutine(url));
+	}
+#else
+	private void Start()
+	{
+		var button = uploadButton.GetComponent<Button>();
+		button.onClick.AddListener(Upload);
+	}
+
 	public void Upload()
 	{
 		var extensions = new[]
 		{
-			new ExtensionFilter("Image Files", "png", "jpg", "jpeg"),
+			new ExtensionFilter("Image Files", "png", "jpg"),
 			new ExtensionFilter("All Files", "*"),
 		};
 		var paths = StandaloneFileBrowser.OpenFilePanel("Open File", "", extensions, false);
@@ -31,6 +63,7 @@ public class Sc12 : MonoBehaviour
 			StartCoroutine(OutputRoutine(new System.Uri(paths[0]).AbsoluteUri));
 		}
 	}
+#endif
 
 	private IEnumerator OutputRoutine(string url)
 	{
@@ -48,7 +81,7 @@ public class Sc12 : MonoBehaviour
 		imageUploaded = true;
 	}
 
-	private string enc;
+	public string enc;
 	public UnityEvent onShared;
 
 	public void Share()
@@ -92,7 +125,7 @@ public class Sc12 : MonoBehaviour
 		db.notifications.Add(notification);
 		PlayerPrefs.SetInt("point", PlayerPrefs.GetInt("point") + 1);
 		PlayerPrefs.Save();
-		
+
 		Database.Set(db);
 	}
 }

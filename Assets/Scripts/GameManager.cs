@@ -189,8 +189,16 @@ public class GameManager : MonoBehaviour
 				},
 				posts = new List<Post>(),
 			};
-			PlayerPrefs.SetString("database", JsonUtility.ToJson(db));
-			PlayerPrefs.Save();
+			Database.Set(db);
+		}
+	}
+
+	private void Update()
+	{
+		if (Input.GetKey(KeyCode.LeftAlt) && Input.GetKey(KeyCode.X))
+		{
+			Database.Reset();
+			Awake();
 		}
 	}
 }

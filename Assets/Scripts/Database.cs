@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.InteropServices;
+using System.Runtime.Serialization.Formatters.Binary;
 using GameFlow;
 using UnityEngine;
 
@@ -14,21 +17,106 @@ public class Database
 	public ToppingHistory[] toppingHistory;
 
 	public User user;
-	
+
+	[DllImport("__Internal")]
+	private static extern void SyncFiles();
+
+	[DllImport("__Internal")]
+	private static extern void WindowAlert(string message);
+
+	private static readonly string SaveFile = "{0}/save.dat";
+
 	public static Database Get()
 	{
-		return JsonUtility.FromJson<Database>(PlayerPrefs.GetString("database"));
+		Database database = null;
+		var dataPath = string.Format(SaveFile, Application.persistentDataPath);
+
+		try
+		{
+			if (File.Exists(dataPath))
+			{
+				var readText = File.ReadAllText(dataPath);
+				database = JsonUtility.FromJson<Database>(readText);
+			}
+		}
+		catch (Exception e)
+		{
+			PlatformSafeMessage("Failed to Load: " + e.Message);
+		}
+
+		return database;
 	}
 
 	public static void Set(Database database)
 	{
-		PlayerPrefs.SetString("database", JsonUtility.ToJson(database));
-		PlayerPrefs.Save();
+		var dataPath = string.Format(SaveFile, Application.persistentDataPath);
+
+		try
+		{
+			if (File.Exists(dataPath))
+			{
+				File.Delete(dataPath);
+			}
+
+			File.WriteAllText(dataPath, JsonUtility.ToJson(database));  
+
+			if (Application.platform == RuntimePlatform.WebGLPlayer)
+			{
+				SyncFiles();
+			}
+		}
+		catch (Exception e)
+		{
+			PlatformSafeMessage("Failed to Save: " + e.Message);
+		}
+	}
+
+	public static void Reset()
+	{
+		var dataPath = string.Format(SaveFile, Application.persistentDataPath);
+		try
+		{
+			if (File.Exists(dataPath))
+			{
+				File.Delete(dataPath);
+			}
+			
+			if (Application.platform == RuntimePlatform.WebGLPlayer)
+			{
+				SyncFiles();
+			}
+		}
+		catch (Exception e)
+		{
+			PlatformSafeMessage("Failed to Save: " + e.Message);
+		}
 	}
 
 	public static bool HasDatabase()
 	{
-		return PlayerPrefs.HasKey("database");
+		var hasDb = false;
+		try
+		{
+			hasDb = File.Exists(string.Format(SaveFile, Application.persistentDataPath));
+		}
+		catch (Exception e)
+		{
+			PlatformSafeMessage("Failed to Save: " + e.Message);
+		}
+
+		return hasDb;
+	}
+
+	public static void PlatformSafeMessage(string message)
+	{
+		if (Application.platform == RuntimePlatform.WebGLPlayer)
+		{
+			WindowAlert(message);
+		}
+		else
+		{
+			Debug.Log(message);
+		}
 	}
 }
 
@@ -56,11 +144,11 @@ public class Post
 }
 
 [Serializable]
- public class CakeItem
- {
- 	public int id;
- 	public int[] toppings;
- }
+public class CakeItem
+{
+	public int id;
+	public int[] toppings;
+}
 
 [Serializable]
 public class User

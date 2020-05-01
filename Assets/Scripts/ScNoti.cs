@@ -25,6 +25,8 @@ public class ScNoti : MonoBehaviour
             Destroy(o.gameObject);
         }
 
+        if (!Database.HasDatabase()) return;
+        
         db = Database.Get();
 
         foreach (var noti in db.notifications)
