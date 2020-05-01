@@ -23,64 +23,6 @@ public class Sc12 : MonoBehaviour
 
 	public bool imageUploaded;
 
-#if UNITY_WEBGL && !UNITY_EDITOR
-	private void Start()
-	{
-		var button = uploadButton.GetComponent<Button>();
-		button.onClick.RemoveAllListeners();
-		button.onClick.AddListener(OnClickWebGL);
-	}
-
-	[DllImport("__Internal")]
-	private static extern void UploadFile(string gameObjectName, string methodName, string filter, bool multiple);
-
-	public void OnClickWebGL()
-	{
-		UploadFile(gameObject.name, "OnFileUpload", ".png, .jpg", false);
-	}
-
-	public void OnFileUpload(string url)
-	{
-		StartCoroutine(OutputRoutine(url));
-	}
-#else
-	private void Start()
-	{
-		var button = uploadButton.GetComponent<Button>();
-		button.onClick.AddListener(Upload);
-	}
-
-	public void Upload()
-	{
-		var extensions = new[]
-		{
-			new ExtensionFilter("Image Files", "png", "jpg"),
-			new ExtensionFilter("All Files", "*"),
-		};
-		var paths = StandaloneFileBrowser.OpenFilePanel("Open File", "", extensions, false);
-		if (paths.Length > 0)
-		{
-			StartCoroutine(OutputRoutine(new System.Uri(paths[0]).AbsoluteUri));
-		}
-	}
-#endif
-
-	private IEnumerator OutputRoutine(string url)
-	{
-		var loader = new WWW(url);
-		yield return loader;
-
-		var texture = loader.texture;
-		var s = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
-
-		image.overrideSprite = s;
-
-		var bytes = texture.EncodeToPNG();
-		enc = Convert.ToBase64String(bytes);
-
-		imageUploaded = true;
-	}
-
 	public string enc;
 	public UnityEvent onShared;
 

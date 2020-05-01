@@ -39,7 +39,12 @@ public class UploadButton : MonoBehaviour, IPointerDownHandler
     }
 
     private void OnClick() {
-        var paths = StandaloneFileBrowser.OpenFilePanel("Title", "", ".png, .jpg", false);
+        var extensions = new[]
+        {
+            new ExtensionFilter("Image Files", "png", "jpg"),
+            new ExtensionFilter("All Files", "*"),
+        };
+        var paths = StandaloneFileBrowser.OpenFilePanel("Select Picture", "", extensions, false);
         if (paths.Length > 0) {
             StartCoroutine(OutputRoutine(new System.Uri(paths[0]).AbsoluteUri));
         }
