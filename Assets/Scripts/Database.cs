@@ -38,6 +38,8 @@ public class Database
 				var readText = File.ReadAllText(dataPath);
 				database = JsonUtility.FromJson<Database>(readText);
 			}
+			
+			Log("get at " + dataPath);
 		}
 		catch (Exception e)
 		{
@@ -64,11 +66,18 @@ public class Database
 			{
 				SyncFiles();
 			}
+			
+			Log("save at " + dataPath);
 		}
 		catch (Exception e)
 		{
 			PlatformSafeMessage("Failed to Save: " + e.Message);
 		}
+	}
+
+	public static void Log(string message)
+	{
+		Debug.Log(message);
 	}
 
 	public static void Reset()
@@ -85,6 +94,8 @@ public class Database
 			{
 				SyncFiles();
 			}
+			
+			Log("delete file " + dataPath);
 		}
 		catch (Exception e)
 		{
@@ -97,7 +108,8 @@ public class Database
 		var hasDb = false;
 		try
 		{
-			hasDb = File.Exists(string.Format(SaveFile, Application.persistentDataPath));
+			var path = string.Format(SaveFile, Application.persistentDataPath);
+			hasDb = File.Exists(path);
 		}
 		catch (Exception e)
 		{

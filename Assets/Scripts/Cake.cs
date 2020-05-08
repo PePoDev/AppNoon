@@ -63,6 +63,11 @@ public class Cake : MonoBehaviour
 		}
 	}
 
+	public void NotCustom()
+	{
+		custom = false;
+	}
+
 	private bool custom = false;
 	public void LoadMonth(int month)
 	{

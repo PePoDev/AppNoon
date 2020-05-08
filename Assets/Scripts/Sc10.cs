@@ -23,7 +23,7 @@ public class Sc10 : MonoBehaviour
 	
 	private int m_curentMonth = 0;
 
-	private void Start()
+	private void OnEnable()
 	{
 		m_curentMonth = DateTime.Now.Month - 1;
 		ChangeMonth(0);
@@ -36,14 +36,22 @@ public class Sc10 : MonoBehaviour
 			m_curentMonth = 0;
 		if (m_curentMonth > 11)
 			m_curentMonth = 11;
+		
+		Debug.Log("current month: " + m_curentMonth);
+		
 		calenda.overrideSprite = months[m_curentMonth];
 
 		if (PlayerPrefs.GetInt("lastMonth", 0) == m_curentMonth + 1)
 		{
+			Debug.Log("this month");
+
+			cake.NotCustom();
 			cake.OnEnable();
 		}
 		else
 		{
+			Debug.Log("another month");
+			
 			cake.LoadMonth(m_curentMonth);
 		}
 

@@ -195,9 +195,10 @@ public class GameManager : MonoBehaviour
 
 	private void Update()
 	{
-		if (Input.GetKey(KeyCode.LeftAlt) && Input.GetKey(KeyCode.X))
+		if (Input.GetKey(KeyCode.LeftAlt) && Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.X))
 		{
 			Database.Reset();
+			PlayerPrefs.DeleteAll();
 			Awake();
 		}
 	}

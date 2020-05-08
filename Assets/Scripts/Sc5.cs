@@ -14,8 +14,6 @@ public class Sc5 : MonoBehaviour
 
 	public ItemData[] items;
 
-	// public Image cake;
-
 	private int m_index = 0;
 
 	private void OnEnable()
